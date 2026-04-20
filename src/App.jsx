@@ -14,7 +14,7 @@ function App() {
         <Route path="/create-event" element={<CreateEvent />} />
         <Route path="/invite" element={<InviteParticipants />} />
         <Route path="/join" element={<JoinTheExchange />} />
-        <Route path="/santa" element={<Santa />} />
+        <Route path="/" element={<Santa />} />
         <Route path="/match" element={<Match />} />
       </Routes>
     </BrowserRouter>
