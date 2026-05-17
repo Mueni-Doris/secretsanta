@@ -1,4 +1,12 @@
 // src/components/dashboard/ParticipantTable.jsx
+//
+// HOW THIS COMPONENT GETS ITS DATA:
+//
+//   PostgreSQL → Spring Boot (GET /api/participants)
+//     → src/api/dashboard.js → getParticipants()
+//       → src/hooks/useDashboard.js → { participants, loading, refresh }
+//         → AdminDashboard.jsx → passes as props
+//           → THIS component
 
 import Badge from '../ui/Badge'
 
@@ -14,12 +22,15 @@ function getWishlistVariant(wishlistStatus) {
   return 'gray'
 }
 
-function Avatar({ name, color }) {
-  const initials = name
-    .split(' ')
-    .map((n) => n[0])
-    .join('')
+// Formats createdAt from backend e.g. "2024-12-01T10:30:00" → "1 Dec"
+function formatDate(dateStr) {
+  if (!dateStr) return '—'
+  const date = new Date(dateStr)
+  return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })
+}
 
+function Avatar({ name, color }) {
+  const initials = name.split(' ').map((n) => n[0]).join('')
   return (
     <div
       className="w-7 h-7 rounded-full flex items-center justify-center text-white text-[10px] font-bold flex-shrink-0"
@@ -32,7 +43,7 @@ function Avatar({ name, color }) {
 
 export default function ParticipantTable({ participants, loading, refresh }) {
   return (
-    <div className="bg-[#fde7c7] rounded-2xl shadow-sm overflow-hidden mb-4">
+    <div className="bg-white rounded-2xl shadow-sm overflow-hidden mb-4">
       <div className="px-5 pt-5 pb-3 flex items-center justify-between">
         <p className="text-[10px] font-semibold text-[#8a7a65] uppercase tracking-widest">
           Participant Status
@@ -85,8 +96,9 @@ export default function ParticipantTable({ participants, loading, refresh }) {
                   <td className="px-3 py-3 hidden sm:table-cell">
                     <Badge label={p.wishlistStatus} variant={getWishlistVariant(p.wishlistStatus)} />
                   </td>
+                  {/* Real date from backend — falls back to "Today" if not yet available */}
                   <td className="px-3 py-3 text-[11px] text-[#8a7a65] hidden sm:table-cell">
-                    {p.status === 'Joined' ? 'Today' : '—'}
+                    {p.createdAt ? formatDate(p.createdAt) : p.status === 'Joined' ? 'Today' : '—'}
                   </td>
                 </tr>
               ))}
