@@ -10,7 +10,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Sidebar from '../components/layout/Sidebar'
-import { createEvent } from '../api/events'
+import { createEvent } from '../api'
 
 export default function CreateEvent() {
   const navigate = useNavigate()
@@ -54,14 +54,15 @@ export default function CreateEvent() {
   }
 
   return (
-    <div className="flex min-h-screen bg-[#f5f0eb] font-sans">
+    <div className="flex min-h-screen christmas-page font-sans">
       <Sidebar />
 
       <main className="flex-1 flex items-center justify-center px-4 py-10">
-        <div className="bg-white rounded-2xl shadow-sm p-6 w-full max-w-lg">
+        <div className="christmas-panel rounded-2xl p-6 w-full max-w-lg">
 
-          <h1 className="text-2xl font-serif mb-1 text-[#1a1208]">Create Your Event 🎄</h1>
-          <p className="text-sm text-[#8a7a65] mb-6">Set up your Secret Santa exchange in seconds.</p>
+          <p className="ribbon-label mb-1">Holiday hosting</p>
+          <h1 className="text-5xl font-serif mb-1 text-[#103b2c]">Create Your Event</h1>
+          {/* <p className="text-sm text-[#806f5b] mb-6">Set up your Secret Santa exchange in seconds.</p> */}
 
           {error && (
             <div className="bg-[#fff0f0] border border-[#f0c8c8] text-[#c8453a] text-xs rounded-xl px-4 py-3 mb-4">
@@ -73,22 +74,22 @@ export default function CreateEvent() {
             <label className="block text-[10px] font-semibold text-[#8a7a65] uppercase tracking-widest mb-1.5">Your Email</label>
             <input type="email" placeholder="you@example.com" value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full p-3 border border-[#e0d8cc] rounded-xl text-sm focus:outline-none focus:border-[#c8453a] bg-[#faf8f5] transition-colors" />
-            <p className="text-[11px] text-[#8a7a65] mt-1">You'll receive event updates and be added as a participant 🎁</p>
+              className="christmas-input w-full p-3 border rounded-xl text-sm focus:outline-none transition-colors" />
+            <p className="text-[11px] text-[#806f5b] mt-1">You'll receive event updates and be added as a participant.</p>
           </div>
 
           <div className="mb-4">
             <label className="block text-[10px] font-semibold text-[#8a7a65] uppercase tracking-widest mb-1.5">Event Name</label>
-            <input type="text" placeholder="e.g. Office Holiday Swap 2024" value={name}
+            <input type="text" placeholder="e.g. Office Holiday Gifting" value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full p-3 border border-[#e0d8cc] rounded-xl text-sm focus:outline-none focus:border-[#c8453a] bg-[#faf8f5] transition-colors" />
+              className="christmas-input w-full p-3 border rounded-xl text-sm focus:outline-none transition-colors" />
           </div>
 
           <div className="mb-4">
             <label className="block text-[10px] font-semibold text-[#8a7a65] uppercase tracking-widest mb-1.5">Draw Date</label>
             <input type="date" value={date}
               onChange={(e) => setDate(e.target.value)}
-              className="w-full p-3 border border-[#e0d8cc] rounded-xl text-sm focus:outline-none focus:border-[#c8453a] bg-[#faf8f5] transition-colors" />
+              className="christmas-input w-full p-3 border rounded-xl text-sm focus:outline-none transition-colors" />
           </div>
 
           <div className="mb-4">
@@ -96,9 +97,9 @@ export default function CreateEvent() {
             <div className="flex gap-2">
               <input type="number" placeholder="e.g. 1500" value={budget}
                 onChange={(e) => setBudget(e.target.value)}
-                className="flex-1 p-3 border border-[#e0d8cc] rounded-xl text-sm focus:outline-none focus:border-[#c8453a] bg-[#faf8f5] transition-colors" />
+                className="christmas-input flex-1 p-3 border rounded-xl text-sm focus:outline-none transition-colors" />
               <select value={currency} onChange={(e) => setCurrency(e.target.value)}
-                className="p-3 border border-[#e0d8cc] rounded-xl text-sm focus:outline-none focus:border-[#c8453a] bg-[#faf8f5] transition-colors">
+                className="christmas-input p-3 border rounded-xl text-sm focus:outline-none transition-colors">
                 <option>KES</option>
                 <option>USD</option>
                 <option>EUR</option>
@@ -113,26 +114,26 @@ export default function CreateEvent() {
             </label>
             <textarea placeholder="e.g. No gift cards, keep it fun!" value={rules}
               onChange={(e) => setRules(e.target.value)} rows={3}
-              className="w-full p-3 border border-[#e0d8cc] rounded-xl text-sm focus:outline-none focus:border-[#c8453a] bg-[#faf8f5] transition-colors resize-none" />
+              className="christmas-input w-full p-3 border rounded-xl text-sm focus:outline-none transition-colors resize-none" />
           </div>
 
           <button onClick={handleCreate} disabled={creating}
-            className="w-full bg-[#c8453a] hover:bg-[#a83530] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold py-3.5 rounded-xl transition-all text-sm">
-            {creating ? 'Creating...' : 'Create Event 🎁'}
+            className="christmas-button w-full active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed text-white font-extrabold py-3.5 rounded-xl transition-all text-sm">
+            {creating ? 'Creating...' : 'Create Event'}
           </button>
         </div>
       </main>
 
       {showSuccess && (
         <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 px-4">
-          <div className="bg-white rounded-2xl p-6 w-full max-w-sm text-center shadow-xl">
-            <div className="text-5xl mb-3 animate-bounce">🎉</div>
-            <h2 className="text-xl font-serif text-[#1a1208] mb-2">Your Secret Santa is live!</h2>
-            <p className="text-sm text-[#8a7a65] mb-5">Now invite your crew and let the magic begin ✨</p>
+          <div className="christmas-panel rounded-2xl p-6 w-full max-w-sm text-center shadow-xl">
+            <p className="ribbon-label mb-2">All set</p>
+            <h2 className="text-4xl font-serif text-[#103b2c] mb-2">Your Secret Santa is live</h2>
+            <p className="text-sm text-[#1b5725] mb-5">Check your email to activate your account</p>
             <div className="flex flex-col gap-2">
               <button onClick={() => navigate('/invite')}
-                className="bg-[#c8453a] hover:bg-[#a83530] text-white font-semibold py-3 rounded-xl text-sm transition-all">
-                Invite Participants 🎄
+                className="christmas-button text-white font-extrabold py-3 rounded-xl text-sm transition-all">
+                Invite Participants
               </button>
               <button onClick={() => setShowSuccess(false)}
                 className="text-sm text-[#8a7a65] hover:underline">

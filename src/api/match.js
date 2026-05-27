@@ -1,9 +1,21 @@
-// src/api/participants.js
+import axiosClient from "./axiosClient";
 
-import { apiClient } from './client'
+// ── Get my match
+export const getMyMatch = (userId, round = 2, eventId) =>
+  axiosClient.get("/matches/my", {
+    params: {
+      userId,
+      round,
+      ...(eventId ? { eventId } : {}),
+    },
+  });
 
-export const joinExchange = (data) =>
-  apiClient('/match', {
-    method: 'POST',
-    body: JSON.stringify(data),
-  })
+// ── Save match
+export const saveMatch = (data) =>
+  axiosClient.post("/matches", data);
+
+// ── Get match status
+export const getMatchStatus = (eventId) =>
+  axiosClient.get("/matches/status", {
+    params: eventId ? { eventId } : undefined,
+  });

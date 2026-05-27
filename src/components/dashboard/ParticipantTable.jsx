@@ -43,7 +43,7 @@ function Avatar({ name, color }) {
 
 export default function ParticipantTable({ participants, loading, refresh }) {
   return (
-    <div className="bg-white rounded-2xl shadow-sm overflow-hidden mb-4">
+    <div className="christmas-panel rounded-2xl overflow-hidden mb-4">
       <div className="px-5 pt-5 pb-3 flex items-center justify-between">
         <p className="text-[10px] font-semibold text-[#8a7a65] uppercase tracking-widest">
           Participant Status
@@ -79,7 +79,7 @@ export default function ParticipantTable({ participants, loading, refresh }) {
               {participants.map((p) => (
                 <tr
                   key={p.id}
-                  className="border-b border-[#f7f4ef] last:border-0 hover:bg-[#faf8f5] transition-colors"
+                  className="border-b border-[#eadbc4] last:border-0 hover:bg-[#fff4e2] transition-colors"
                 >
                   <td className="px-5 py-3">
                     <div className="flex items-center gap-2.5">

@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -7,18 +7,13 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['DM Sans', 'sans-serif'],
-        serif: ['Playfair Display', 'serif'],
+        sans: ['Nunito', 'DM Sans', 'sans-serif'],
+        serif: ['Mountains of Christmas', 'Playfair Display', 'serif'],
+      },
+      backgroundImage: {
+        hero: "url('/hero.png')",
       },
     },
   },
   plugins: [],
-  // tailwind.config.js
-theme: {
-  extend: {
-    backgroundImage: {
-      'hero': "url('/hero.png')",
-    }
-  }
-}
 }

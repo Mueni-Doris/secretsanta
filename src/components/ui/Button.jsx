@@ -9,13 +9,13 @@ export default function Button({
   type = 'button',
 }) {
   const base =
-    'text-xs font-semibold px-4 py-2 rounded-lg transition-all whitespace-nowrap disabled:opacity-40 disabled:cursor-not-allowed active:scale-[0.98]'
+    'text-xs font-extrabold px-4 py-2 rounded-lg transition-all whitespace-nowrap disabled:opacity-40 disabled:cursor-not-allowed active:scale-[0.98]'
 
   const variants = {
-    primary: 'bg-[#c8453a] hover:bg-[#a83530] text-white',
-    outline: 'border border-[#e0d8cc] bg-transparent text-[#1a1208] hover:bg-[#f5f0eb]',
-    ghost: 'bg-transparent text-[#c8453a] hover:underline',
-    dark: 'bg-[#1a1208] hover:bg-[#2a2010] text-white',
+    primary: 'christmas-button text-white',
+    outline: 'border border-[#d8c6a7] bg-[#fffaf1] text-[#103b2c] hover:bg-[#f7ead7]',
+    ghost: 'bg-transparent text-[#b92f2c] hover:underline',
+    dark: 'bg-[#103b2c] hover:bg-[#0b261d] text-white',
   }
 
   return (

@@ -1,3 +1,98 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --ss-cream: #fbf4e8;
+    --ss-paper: #fffaf1;
+    --ss-evergreen: #103b2c;
+    --ss-evergreen-soft: #1f5a43;
+    --ss-cranberry: #b92f2c;
+    --ss-cranberry-dark: #8f211f;
+    --ss-gold: #c89b3c;
+    --ss-ink: #23160f;
+    --ss-muted: #806f5b;
+  }
+
+  html {
+    background: var(--ss-cream);
+    font-family: 'Nunito', 'DM Sans', system-ui, sans-serif;
+  }
+
+  body {
+    min-height: 100vh;
+    color: var(--ss-ink);
+    background:
+      radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.85) 0 1px, transparent 1.8px),
+      radial-gradient(circle at 78% 22%, rgba(255, 255, 255, 0.7) 0 1px, transparent 1.8px),
+      radial-gradient(circle at 44% 72%, rgba(255, 255, 255, 0.6) 0 1px, transparent 1.8px),
+      linear-gradient(135deg, #fbf4e8 0%, #f7ead7 44%, #edf4eb 100%);
+    background-size: 90px 90px, 120px 120px, 150px 150px, auto;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-serif {
+    font-family: 'Mountains of Christmas', 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  input,
+  textarea,
+  select {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  }
+}
+
+@layer components {
+  .christmas-page {
+    background:
+      radial-gradient(circle at top left, rgba(200, 155, 60, 0.16), transparent 28rem),
+      radial-gradient(circle at bottom right, rgba(16, 59, 44, 0.16), transparent 26rem),
+      linear-gradient(135deg, #fbf4e8 0%, #f7ead7 52%, #edf4eb 100%);
+  }
+
+  .christmas-panel {
+    border: 1px solid rgba(184, 47, 44, 0.16);
+    background:
+      linear-gradient(180deg, rgba(255, 250, 241, 0.97), rgba(255, 246, 232, 0.94)),
+      repeating-linear-gradient(90deg, transparent 0 18px, rgba(200, 155, 60, 0.04) 18px 19px);
+    box-shadow: 0 18px 45px rgba(35, 22, 15, 0.12);
+  }
+
+  .christmas-dark {
+    background:
+      radial-gradient(circle at 20% 0%, rgba(200, 155, 60, 0.16), transparent 20rem),
+      linear-gradient(180deg, #103b2c 0%, #0b261d 100%);
+  }
+
+  .christmas-button {
+    background: linear-gradient(135deg, var(--ss-cranberry), var(--ss-cranberry-dark));
+    box-shadow: 0 10px 20px rgba(143, 33, 31, 0.22);
+  }
+
+  .christmas-button:hover {
+    filter: brightness(0.96);
+  }
+
+  .christmas-input {
+    border-color: rgba(128, 111, 91, 0.28);
+    background-color: rgba(255, 250, 241, 0.88);
+  }
+
+  .christmas-input:focus {
+    border-color: var(--ss-cranberry);
+    box-shadow: 0 0 0 3px rgba(184, 47, 44, 0.12);
+  }
+
+  .ribbon-label {
+    color: var(--ss-cranberry);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+}

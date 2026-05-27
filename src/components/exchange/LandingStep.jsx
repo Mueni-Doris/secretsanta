@@ -21,11 +21,11 @@ const vibeImages = [
 
 export default function LandingStep({ onAccept }) {
   return (
-    <div className="bg-[#fde7c7] rounded-2xl p-8 shadow-sm">
+    <div className="christmas-panel rounded-2xl p-8">
       <p className="text-xs font-semibold text-[#c8453a] uppercase tracking-widest mb-2">
-        ✦ Participant Invite
+        Participant Invite
       </p>
-      <h1 className="text-4xl font-serif text-[#1a1208] leading-tight mb-3">
+      <h1 className="text-5xl font-serif text-[#103b2c] leading-tight mb-3">
         Holiday Swap{' '}
         <span className="italic text-[#c8453a]">2024</span>
       </h1>

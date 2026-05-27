@@ -22,7 +22,7 @@ export default function ReminderBanner() {
   }
 
   return (
-    <div className="bg-[#fff8f0] border border-[#f0d8b0] rounded-xl p-4 flex flex-wrap items-start justify-between gap-3">
+    <div className="bg-[#fff8f0] border border-[#d7b86a] rounded-xl p-4 flex flex-wrap items-start justify-between gap-3 shadow-sm">
       <div>
         <p className="text-xs font-semibold text-[#7a5c1e] mb-0.5">Wishlist reminder</p>
         <p className="text-[11px] text-[#8a7a65]">

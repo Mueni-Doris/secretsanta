@@ -9,14 +9,14 @@ const steps = [
     active: false,
   },
   {
-    icon: '✦',
+    icon: '◆',
     number: '02',
     title: 'The Secret Match',
     desc: 'Our magical algorithm pairs hearts while maintaining perfect secrecy. A surprise for everyone.',
     active: true,
   },
   {
-    icon: '🎁',
+    icon: '□',
     number: '03',
     title: 'Guided Giving',
     desc: 'Integrated boutique wishlists ensure every gift is a treasure found and a wish fulfilled.',
@@ -38,13 +38,13 @@ const footerLinks = {
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-[#f5f0eb] font-sans overflow-x-hidden">
+    <div className="christmas-page min-h-screen font-sans overflow-x-hidden">
 
       {/* ── NAVBAR ── */}
-      <nav className="flex items-center justify-between px-6 md:px-12 py-4 bg-[#f5f0eb] sticky top-0 z-50 border-b border-[#e0d8cc]">
+      <nav className="flex items-center justify-between px-6 md:px-12 py-4 bg-[#fffaf1]/90 backdrop-blur sticky top-0 z-50 border-b border-[#d8c6a7]">
         <div className="flex items-center gap-2">
-          <span className="text-[#c8453a]">✦</span>
-          <span className="font-serif text-[#1a1208] font-semibold text-large">Secret Santa</span>
+          <span className="text-[#b92f2c] font-serif text-xl">SS</span>
+          <span className="font-serif text-[#103b2c] font-semibold text-2xl">Secret Santa</span>
         </div>
         <div className="hidden md:flex items-center gap-8 text-[10px] font-semibold text-[#8a7a65] uppercase tracking-widest">
           <a href="#features" className="hover:text-[#1a1208] transition-colors">Features</a>
@@ -52,12 +52,12 @@ export default function LandingPage() {
           <a href="#how" className="hover:text-[#1a1208] transition-colors">How It Works</a>
         </div>
         <div className="flex items-center gap-3">
-          <Link to="/join" className="text-xs font-medium text-[#1a1208] hover:text-[#c8453a] transition-colors hidden md:block">
+          <Link to="/login" className="text-xs font-medium text-[#1a1208] hover:text-[#c8453a] transition-colors hidden md:block">
             Log In
           </Link>
           <Link
             to="/create-event"
-            className="bg-[#c8453a] hover:bg-[#a83530] text-white text-xs font-semibold px-5 py-2.5 rounded-full transition-all"
+            className="christmas-button text-white text-xs font-extrabold px-5 py-2.5 rounded-full transition-all"
           >
             Start Exchange
           </Link>
@@ -70,16 +70,16 @@ export default function LandingPage() {
 
           {/* Left */}
           <div>
-            <div className="inline-flex items-center gap-2 bg-[#e8e0d4] text-[#6a5a48] text-[10px] font-semibold uppercase tracking-widest px-3 py-1.5 rounded-full mb-7">
-              ✦ Holiday Season 2026
+            <div className="inline-flex items-center gap-2 bg-[#fffaf1] border border-[#d8c6a7] text-[#806f5b] text-[10px] font-extrabold uppercase tracking-widest px-3 py-1.5 rounded-full mb-7">
+              Holiday Season 2026
             </div>
 
-            <h1 className="font-serif text-5xl md:text-6xl leading-[1.05] mb-6">
-              <span className="text-[#c8453a]">The Magic of</span>
+            <h1 className="font-serif text-6xl md:text-7xl leading-[0.95] mb-6">
+              <span className="text-[#b92f2c]">The Magic of</span>
               <br />
-              <em className="text-[#1a4a2a] not-italic">Perfect</em>
+              <em className="text-[#103b2c] not-italic">Perfect</em>
               <br />
-              <span className="text-[#c8453a]">Giving</span>
+              <span className="text-[#b92f2c]">Giving</span>
             </h1>
 
             <p className="text-[#6a5a48] text-base leading-relaxed mb-8 max-w-sm">
@@ -89,7 +89,7 @@ export default function LandingPage() {
             <div className="flex items-center gap-5 flex-wrap">
               <Link
                 to="/create-event"
-                className="bg-[#c8453a] hover:bg-[#a83530] active:scale-[0.98] text-white font-semibold px-7 py-3.5 rounded-full transition-all text-sm"
+                className="christmas-button active:scale-[0.98] text-white font-extrabold px-7 py-3.5 rounded-full transition-all text-sm"
               >
                 Start Your Exchange
               </Link>
@@ -104,7 +104,7 @@ export default function LandingPage() {
 
           {/* Right — hero visual */}
           <div className="relative flex items-center justify-center">
-            <div className="w-full max-w-sm aspect-square rounded-2xl overflow-hidden relative bg-[#1a1208]">
+            <div className="w-full max-w-sm aspect-square rounded-2xl overflow-hidden relative christmas-dark shadow-2xl border border-[#e8c36a]/20">
               {/* Sparkle ring */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="relative w-52 h-52">
@@ -150,7 +150,7 @@ export default function LandingPage() {
             {/* Floating badge */}
             <div className="absolute -bottom-5 left-4 w-24 h-24 rounded-full bg-[#8a7a2a] flex items-center justify-center text-center shadow-xl z-10">
               <div>
-                <span className="text-white text-base block">✦</span>
+                <span className="text-white text-base block">SS</span>
                 <p className="text-white text-[9px] font-semibold leading-tight px-3 mt-0.5">The Holiday Standard</p>
               </div>
             </div>
@@ -228,14 +228,14 @@ export default function LandingPage() {
 
           {/* Right — reveal card */}
           <div className="flex justify-center md:justify-end">
-            <div className="bg-[#faf8f4] border border-[#e0d8cc] rounded-2xl p-8 w-full max-w-xs text-center shadow-sm">
+            <div className="christmas-panel rounded-2xl p-8 w-full max-w-xs text-center">
               <div className="w-14 h-14 rounded-full bg-[#e8d87a] flex items-center justify-center mx-auto mb-5 text-xl">
                 🔒
               </div>
               <p className="text-xs text-[#8a7a65] italic mb-3">Your Secret Giftee is...</p>
               <h3 className="font-serif text-2xl text-[#1a1208] mb-6">Clara Stahlbaum</h3>
               <button className="w-full bg-[#1a4a2a] hover:bg-[#0f3a1a] text-white text-xs font-semibold py-3 rounded-full transition-all flex items-center justify-center gap-2">
-                Explore Clara's Wishlist <span>✦</span>
+                Explore Clara's Wishlist
               </button>
             </div>
           </div>
@@ -279,14 +279,14 @@ export default function LandingPage() {
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <span className="text-[#c8453a]">✦</span>
-              <span className="font-serif text-[#f5f0eb] text-sm font-semibold">Secret Santa</span>
+              <span className="text-[#e8c36a] font-serif text-xl">SS</span>
+              <span className="font-serif text-[#f5f0eb] text-2xl font-semibold">Secret Santa</span>
             </div>
             <p className="text-[#6a5a48] text-xs leading-relaxed mb-5">
               Crafting magical moments of connection through the timeless art of festive gift giving.
             </p>
             <div className="flex items-center gap-3">
-              <div className="w-7 h-7 rounded-full bg-[#2a1e10] flex items-center justify-center text-[#a09880] text-xs">✦</div>
+              <div className="w-7 h-7 rounded-full bg-[#2a1e10] flex items-center justify-center text-[#a09880] text-xs">SS</div>
               <div className="w-7 h-7 rounded-full bg-[#2a1e10] flex items-center justify-center text-[#a09880] text-xs">✉</div>
             </div>
           </div>

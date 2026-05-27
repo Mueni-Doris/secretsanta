@@ -10,7 +10,7 @@ export default function InputField({
   rows,
 }) {
   const inputClass =
-    'w-full border border-[#e0d8cc] rounded-xl px-4 py-3 text-sm text-[#1a1208] placeholder-[#c0b8a8] focus:outline-none focus:border-[#c8453a] transition-colors bg-[#faf8f5]'
+    'christmas-input w-full border rounded-xl px-4 py-3 text-sm text-[#23160f] placeholder-[#b8a98f] focus:outline-none transition-colors'
 
   return (
     <div className="mb-5">
