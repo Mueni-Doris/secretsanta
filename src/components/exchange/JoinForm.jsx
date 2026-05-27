@@ -1,91 +1,132 @@
-// src/components/exchange/JoinForm.jsx
-
 import { useState } from 'react'
-import InputField from '../ui/InputField'
-import Button from '../ui/Button'
-import { joinExchange } from '../../api/participants'
 
-const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+export default function JoinForm({ onBack, onSubmit, loading }) {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [eventId, setEventId] = useState('')
 
-export default function JoinForm({ onBack, onSuccess }) {
-  const [form, setForm] = useState({ name: '', email: '', wishlist: '' })
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
+  const handleSubmit = (e) => {
+    e.preventDefault()
 
-  const update = (field) => (e) => setForm({ ...form, [field]: e.target.value })
-
-  const handleSubmit = async () => {
-    setError('')
-    if (!form.name) return setError('Name is required')
-    if (!isValidEmail(form.email)) return setError('Enter a valid email address')
-
-    try {
-      setLoading(true)
-      await joinExchange(form)
-      onSuccess(form)
-    } catch {
-      // fallback: still show success in dev when backend not connected
-      onSuccess(form)
-    } finally {
-      setLoading(false)
-    }
+    onSubmit({
+      name,
+      email,
+      password,
+      confirmPassword,
+      eventId,
+    })
   }
 
   return (
-    <>
+    <div className="christmas-panel rounded-3xl p-6 md:p-8">
+
       <button
         onClick={onBack}
-        className="text-[11px] text-[#8a7a65] hover:text-[#1a1208] mb-6 flex items-center gap-1 transition-colors"
+        className="text-sm text-[#8a7a65] hover:text-[#c8453a] mb-6"
       >
         ← Back
       </button>
 
-      <h2 className="text-2xl font-serif text-[#1a1208] mb-1">Join the Exchange</h2>
-      <p className="text-sm text-[#8a7a65] mb-6">Fill in your details to confirm your spot.</p>
+      <div className="text-center mb-8">
+        <p className="ribbon-label mb-2">Participant access</p>
 
-      <div className="bg-white rounded-2xl p-6 shadow-sm mb-4">
-        <InputField
-          label="Full Name"
-          placeholder="e.g. Eleanor Vance"
-          value={form.name}
-          onChange={update('name')}
-        />
-        <InputField
-          label="Email Address"
-          type="email"
-          placeholder="you@example.com"
-          value={form.email}
-          onChange={update('email')}
-        />
-        <InputField
-          label="Wishlist Note"
-          placeholder="Things you'd love to receive..."
-          value={form.wishlist}
-          onChange={update('wishlist')}
-          optional
-          rows={3}
-        />
+        <h2 className="font-serif text-5xl text-[#103b2c]">
+          Join The Exchange
+        </h2>
+
+        <p className="text-sm text-[#8a7a65] mt-2">
+          Create your account and join the fun
+        </p>
       </div>
 
-      {error && <p className="text-[#c8453a] text-xs mb-3 px-1">{error}</p>}
+      <form onSubmit={handleSubmit}>
 
-      {/* Draw date reminder */}
-      <div className="bg-[#1a1208] rounded-xl p-4 flex items-center gap-3 mb-6">
-        <span className="text-2xl">📅</span>
-        <div>
-          <p className="text-xs font-semibold text-[#f5f0eb]">Draw happens on Dec 20</p>
-          <p className="text-[11px] text-[#a09880]">You'll receive your match via email.</p>
+        {/* Name */}
+        <div className="mb-4">
+          <label className="block text-[10px] font-semibold text-[#8a7a65] uppercase tracking-widest mb-1.5">
+            Full Name
+          </label>
+
+          <input
+            type="text"
+            placeholder="e.g. Diana"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="christmas-input w-full p-3 border rounded-xl text-sm focus:outline-none"
+          />
         </div>
-      </div>
 
-      <Button
-        onClick={handleSubmit}
-        disabled={loading}
-        variant="primary"
-        className="w-full py-3.5 text-sm"
-      >
-        {loading ? 'Joining...' : 'Confirm My Spot 🎁'}
-      </Button>
-    </>
+        {/* Email */}
+        <div className="mb-4">
+          <label className="block text-[10px] font-semibold text-[#8a7a65] uppercase tracking-widest mb-1.5">
+            Email Address
+          </label>
+
+          <input
+            type="email"
+            placeholder="you@example.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="christmas-input w-full p-3 border rounded-xl text-sm focus:outline-none"
+          />
+        </div>
+
+        {/* Event ID */}
+        <div className="mb-4">
+          <label className="block text-[10px] font-semibold text-[#8a7a65] uppercase tracking-widest mb-1.5">
+            Event ID
+          </label>
+
+          <input
+            type="text"
+            placeholder="e.g. 5"
+            value={eventId}
+            onChange={(e) => setEventId(e.target.value)}
+            className="christmas-input w-full p-3 border rounded-xl text-sm focus:outline-none"
+          />
+        </div>
+
+        {/* Password */}
+        <div className="mb-4">
+          <label className="block text-[10px] font-semibold text-[#8a7a65] uppercase tracking-widest mb-1.5">
+            Password
+          </label>
+
+          <input
+            type="password"
+            placeholder="Minimum 6 characters"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="christmas-input w-full p-3 border rounded-xl text-sm focus:outline-none"
+          />
+        </div>
+
+        {/* Confirm Password */}
+        <div className="mb-6">
+          <label className="block text-[10px] font-semibold text-[#8a7a65] uppercase tracking-widest mb-1.5">
+            Confirm Password
+          </label>
+
+          <input
+            type="password"
+            placeholder="Repeat your password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            className="christmas-input w-full p-3 border rounded-xl text-sm focus:outline-none"
+          />
+        </div>
+
+        <button
+          type="submit"
+          disabled={loading}
+          className="christmas-button w-full disabled:opacity-50 text-white font-extrabold py-3.5 rounded-xl transition-all text-sm"
+        >
+          {loading ? 'Joining...' : 'Join Exchange'}
+        </button>
+
+      </form>
+    </div>
   )
 }

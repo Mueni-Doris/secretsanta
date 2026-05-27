@@ -1,21 +1,18 @@
 import { useState, useEffect } from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { useAuth } from '../../context/useAuth'
 
 const navItems = [
   { label: 'Dashboard', icon: '⊞', path: '/dashboard' },
-  { label: 'My Draw', icon: '🎰', path: '/match' },
-  { label: 'Participants', icon: '👥', path: '/participants' },
-  { label: 'Invite Members', icon: '➕', path: '/invite' },
+  { label: 'My Draw', icon: '◆', path: '/match' },
+  { label: 'Participants', icon: '◎', path: '/participants' },
+  { label: 'Invite Members', icon: '+', path: '/invite' },
 ]
 
 export default function Sidebar() {
   const [mobileOpen, setMobileOpen] = useState(false)
-  const location = useLocation()
-
-  // Close mobile drawer on route change
-  useEffect(() => {
-    setMobileOpen(false)
-  }, [location.pathname])
+  const { logout } = useAuth()
+  const navigate = useNavigate()
 
   // Close on escape key
   useEffect(() => {
@@ -29,15 +26,15 @@ export default function Sidebar() {
   const navLinkClass = ({ isActive }) =>
     `flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-medium transition-all w-full
     ${isActive
-      ? 'bg-[#c8453a] text-white'
-      : 'text-[#a09880] hover:bg-white/10 hover:text-[#f5f0eb]'
+      ? 'bg-[#b92f2c] text-white shadow-sm'
+      : 'text-[#dcc9aa] hover:bg-white/10 hover:text-[#fffaf1]'
     }`
 
   const iconOnlyClass = ({ isActive }) =>
     `flex items-center justify-center w-10 h-10 rounded-lg text-base transition-all mx-auto
     ${isActive
-      ? 'bg-[#c8453a] text-white'
-      : 'text-[#a09880] hover:bg-white/10 hover:text-[#f5f0eb]'
+      ? 'bg-[#b92f2c] text-white shadow-sm'
+      : 'text-[#dcc9aa] hover:bg-white/10 hover:text-[#fffaf1]'
     }`
 
   return (
@@ -45,10 +42,10 @@ export default function Sidebar() {
       {/* ===================== */}
       {/* MOBILE topbar (< md)  */}
       {/* ===================== */}
-      <div className="md:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 py-3 bg-[#1a1208] shadow-md">
-        <p className="text-[#f5f0eb] font-serif text-sm">
-          The North Pole{' '}
-          <span className="text-[#c8453a] italic">Secret Santa</span>
+      <div className="md:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 py-3 christmas-dark shadow-md">
+        <p className="text-[#fffaf1] font-serif text-lg leading-none">
+          North Pole{' '}
+          <span className="text-[#e8c36a]">Secret Santa</span>
         </p>
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -73,25 +70,46 @@ export default function Sidebar() {
       {/* Mobile drawer */}
       <aside
         className={`
-          md:hidden fixed top-0 left-0 h-full w-64 bg-[#1a1208] flex flex-col py-6 px-4 z-50
+          md:hidden fixed top-0 left-0 h-full w-64 christmas-dark flex flex-col py-6 px-4 z-50
           transition-transform duration-300 ease-in-out shadow-2xl
           ${mobileOpen ? 'translate-x-0' : '-translate-x-full'}
         `}
       >
         <div className="px-2 mb-8 mt-2">
-          <p className="text-[#f5f0eb] font-serif text-base leading-snug">
+          <p className="text-[#fffaf1] font-serif text-2xl leading-tight">
             The North Pole<br />
-            <span className="text-[#c8453a] italic">Secret Santa</span>
+            <span className="text-[#e8c36a]">Secret Santa</span>
           </p>
         </div>
 
         <nav className="flex flex-col gap-1">
           {navItems.map((item) => (
-            <NavLink key={item.label} to={item.path} end={item.path === '/'} className={navLinkClass}>
+            <NavLink
+              key={item.label}
+              to={item.path}
+              end={item.path === '/'}
+              onClick={() => setMobileOpen(false)}
+              className={navLinkClass}
+            >
               <span className="text-base">{item.icon}</span>
               {item.label}
             </NavLink>
           ))}
+
+          {/* LOGOUT BUTTON */}
+          <button
+            onClick={() => {
+              logout()
+              navigate('/')
+            }}
+            className="
+              flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-medium
+              text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-all w-full
+            "
+          >
+            <span className="text-base">⎋</span>
+            Logout
+          </button>
         </nav>
 
       </aside>
@@ -100,9 +118,9 @@ export default function Sidebar() {
       {/* TABLET sidebar (md → lg)  */}
       {/* icons only, no labels     */}
       {/* ========================= */}
-      <aside className="hidden md:flex lg:hidden flex-col w-16 bg-[#1a1208] min-h-screen py-6 px-2 flex-shrink-0 sticky top-0">
+      <aside className="hidden md:flex lg:hidden flex-col w-16 christmas-dark min-h-screen py-6 px-2 flex-shrink-0 sticky top-0">
         <div className="flex items-center justify-center mb-8">
-          <span className="text-[#c8453a] text-xl">🎅</span>
+          <span className="text-[#e8c36a] font-serif text-2xl">SS</span>
         </div>
 
         <nav className="flex flex-col gap-2">
@@ -117,17 +135,30 @@ export default function Sidebar() {
               {item.icon}
             </NavLink>
           ))}
-
+            {/* LOGOUT BUTTON */}
+            <button
+              onClick={() => {
+                logout()
+                navigate('/')
+              }}
+              className="
+                flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-medium
+                text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-all w-full
+              "
+            >
+              <span className="text-base">⎋</span>
+              Logout
+            </button>
 
         </nav>
       </aside>
 
 
-      <aside className="hidden lg:flex flex-col w-52 bg-[#1a1208] min-h-screen py-6 px-4 flex-shrink-0 sticky top-0">
+      <aside className="hidden lg:flex flex-col w-52 christmas-dark min-h-screen py-6 px-4 flex-shrink-0 sticky top-0">
         <div className="px-2 mb-8">
-          <p className="text-[#f5f0eb] font-serif text-sm leading-snug">
+          <p className="text-[#fffaf1] font-serif text-2xl leading-tight">
             The North Pole<br />
-            <span className="text-[#c8453a] italic">Secret Santa</span>
+            <span className="text-[#e8c36a]">Secret Santa</span>
           </p>
         </div>
 
@@ -143,10 +174,23 @@ export default function Sidebar() {
               {item.label}
               
             </NavLink>
-
+            
             
           ))}
-
+            {/* LOGOUT BUTTON */}
+            <button
+              onClick={() => {
+                logout()
+                navigate('/')
+              }}
+              className="
+                flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-medium
+                text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-all w-full
+              "
+            >
+              <span className="text-base">⎋</span>
+              Logout
+            </button>
         </nav>
 
 

@@ -2,7 +2,7 @@
 
 export default function StatCard({ label, value, sub }) {
   return (
-    <div className="bg-[#fde7c7] rounded-xl p-4 shadow-sm">
+    <div className="christmas-panel rounded-xl p-4">
       <p className="text-[10px] text-[#8a7a65] font-semibold uppercase tracking-widest mb-1">
         {label}
       </p>

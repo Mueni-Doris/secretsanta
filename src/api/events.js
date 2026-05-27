@@ -1,24 +1,19 @@
-// src/api/events.js
-//
-// API calls related to events
-// Used by: CreateEvent.jsx
+import axiosClient from "./axiosClient";
 
-import { apiClient } from './client'
-
-// ── POST /api/events ──────────────────────────────────────────────────────
-// Called when: organizer submits the create event form
-// Body:        { name, drawDate, budget, currency, rules, organizerEmail }
-// Returns:     the newly created event object
-// Backend:     EventController.java → eventRepo.save(event)
-// DB:          INSERT INTO events
+// ── Create Event
 export const createEvent = (data) =>
-  apiClient('/events', {
-    method: 'POST',
-    body: JSON.stringify(data),
-  })
+  axiosClient.post("/events", data);
 
-// ── GET /api/events ───────────────────────────────────────────────────────
-// Called when: future "My Events" page loads 
-// Returns:     all events
+// ── Get all events
 export const getEvents = () =>
-  apiClient('/events')
+  axiosClient.get("/events");
+
+// ── Get one event
+export const getEvent = (eventId) =>
+  axiosClient.get(`/events/${eventId}`);
+
+// ── Get event stats
+export const getStats = (eventId) =>
+  axiosClient.get("/events/stats", {
+    params: eventId ? { eventId } : undefined,
+  });

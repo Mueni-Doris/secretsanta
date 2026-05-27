@@ -11,11 +11,11 @@ import { useDashboard } from '../hooks/useDashboard'
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState('Overview')
-  const { participants, stats, loading, error, refresh } = useDashboard()
+  const { participants, event, stats, loading, error, refresh } = useDashboard()
 
   return (
     <Layout>
-      <TopBar activeTab={activeTab} setActiveTab={setActiveTab} />
+      <TopBar activeTab={activeTab} setActiveTab={setActiveTab} event={event} />
 
       {error && (
         <div className="bg-[#fde7c7] border border-[#f0d8b0] text-[#000000] text-xs rounded-xl px-4 py-3 mb-4">
@@ -23,7 +23,7 @@ export default function AdminDashboard() {
         </div>
       )}
 
-      <EventInfoCard />
+      <EventInfoCard event={event} loading={loading} />
       <StatsRow stats={stats} />
       <ParticipantTable
         participants={participants}
