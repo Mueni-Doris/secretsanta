@@ -33,6 +33,7 @@ export default function Login() {
   }
 
   const handleLogin = async () => {
+    if (loading) return
     if (cooldown > 0) return
 
     setError('')
@@ -107,6 +108,7 @@ export default function Login() {
             </label>
             <input
               type="email"
+              autoComplete="email"
               placeholder="you@example.com"
               value={email}
               onChange={(e) => {
@@ -126,6 +128,7 @@ export default function Login() {
 
             <input
               type={showPassword ? "text" : "password"}
+              autoComplete="current-password"
               placeholder="Your password"
               value={password}
               onChange={(e) => {
