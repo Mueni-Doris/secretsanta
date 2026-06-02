@@ -1,8 +1,6 @@
 // src/components/dashboard/TopBar.jsx
 
-const tabs = ['Overview', 'Participants', 'Invitations']
-
-export default function TopBar({ activeTab, setActiveTab, event }) {
+export default function TopBar({ event }) {
   const title = event?.name || 'Holiday Swap'
 
   return (
