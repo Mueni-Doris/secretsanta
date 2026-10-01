@@ -11,7 +11,7 @@ function formatDate(dateStr) {
 }
 
 function formatBudget(event) {
-  if (!event?.budget) return 'Not set'
+  if (!event?.budget) return 'Go wild.'
 
   const currency = event.currency || 'KES'
   return `${currency} ${Number(event.budget).toLocaleString()}`
@@ -25,11 +25,11 @@ export default function EventInfoCard({ event, loading }) {
       <p className="ribbon-label mb-1">
         Event Details
       </p>
-      <p className="text-sm text-[#3a2e1e] leading-relaxed mb-4">
+      {/* <p className="text-sm text-[#3a2e1e] leading-relaxed mb-4">
         {loading
           ? 'Loading event details...'
           : 'Organise the magic. Set your budget, invite the crew, and let the gifting begin once everyone is signed up.'}
-      </p>
+      </p> */}
 
       <div className="flex flex-wrap items-center gap-6">
         <div>

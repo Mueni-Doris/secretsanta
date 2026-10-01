@@ -54,7 +54,7 @@ export default function CreateEvent() {
   }
 
   return (
-    <div className="flex min-h-screen christmas-page font-sans">
+    <div className="flex flex-col md:flex-row min-h-screen christmas-page font-sans">
       <Sidebar />
 
       <main className="flex-1 flex items-center justify-center px-4 py-10">

@@ -57,7 +57,7 @@ export default function Sidebar() {
       </div>
 
       {/* Spacer so content doesn't hide under fixed topbar on mobile */}
-      <div className="md:hidden h-12" />
+      <div className="md:hidden h-20" />
 
       {/* Mobile overlay */}
       {mobileOpen && (
@@ -75,13 +75,12 @@ export default function Sidebar() {
           ${mobileOpen ? 'translate-x-0' : '-translate-x-full'}
         `}
       >
-        <div className="px-2 mb-8 mt-2">
-          <p className="text-[#fffaf1] font-serif text-2xl leading-tight">
+        <div className="px-2 mb-4 mt-1">
+          <p className="text-[#fffaf1] font-serif text-lg leading-snug sm:text-2xl">
             The North Pole<br />
             <span className="text-[#e8c36a]">Secret Santa</span>
           </p>
         </div>
-
         <nav className="flex flex-col gap-1">
           {navItems.map((item) => (
             <NavLink

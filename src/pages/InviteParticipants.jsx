@@ -90,7 +90,7 @@ export default function InviteParticipants() {
   }
 
   return (
-    <div className="flex min-h-screen christmas-page font-sans">
+    <div className="flex flex-col md:flex-row min-h-screen christmas-page font-sans">
       <Sidebar />
 
       <main className="flex-1 px-5 md:px-8 py-7 max-w-lg">

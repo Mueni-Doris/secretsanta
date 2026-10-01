@@ -2,7 +2,7 @@ import Sidebar from './Sidebar'
 
 export default function Layout({ children }) {
   return (
-    <div className="flex min-h-screen font-sans">
+    <div className="flex flex-col md:flex-row min-h-screen font-sans">
 
       {/* Sidebar stays solid dark — no background image */}
       <Sidebar />

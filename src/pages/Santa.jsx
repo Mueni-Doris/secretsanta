@@ -52,14 +52,15 @@ export default function LandingPage() {
           <a href="#how" className="hover:text-[#1a1208] transition-colors">How It Works</a>
         </div>
         <div className="flex items-center gap-3">
-          <Link to="/login" className="text-xs font-medium text-[#1a1208] hover:text-[#c8453a] transition-colors hidden md:block">
-            Log In
-          </Link>
+         
           <Link
             to="/create-event"
             className="christmas-button text-white text-xs font-extrabold px-5 py-2.5 rounded-full transition-all"
           >
             Start Exchange
+          </Link>
+           <Link to="/login" className=" christmas-button text-xs font-medium text-[#1a1208] hover:text-[#fcfcfc] transition-colors px-5 py-2.5 rounded-full">
+            Log In
           </Link>
         </div>
       </nav>
@@ -233,9 +234,9 @@ export default function LandingPage() {
                 🔒
               </div>
               <p className="text-xs text-[#8a7a65] italic mb-3">Your Secret Giftee is...</p>
-              <h3 className="font-serif text-2xl text-[#1a1208] mb-6">Clara Stahlbaum</h3>
+              <h3 className="font-serif text-2xl text-[#1a1208] mb-6">Baby Doris</h3>
               <button className="w-full bg-[#1a4a2a] hover:bg-[#0f3a1a] text-white text-xs font-semibold py-3 rounded-full transition-all flex items-center justify-center gap-2">
-                Explore Clara's Wishlist
+                Explore Baby Doris' Wishlist
               </button>
             </div>
           </div>
